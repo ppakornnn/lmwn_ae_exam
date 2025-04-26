@@ -1,7 +1,7 @@
 version: 2
 
 models:
-  - name: model_dws_buyer_profile_da
+  - name: model_dws_customers_profile_da
     description: Customer profile data
     columns:
       - name: customer_id
@@ -20,15 +20,15 @@ models:
       - name: customer_segment
         description: Customer Segment
         datatype: varchar
-      - name: status
-        description: Customer Status
-        datatype: varchar
+      - name: is_active
+        description: Flag whether customer active
+        datatype: tinyint
       - name: birth_year
         description: The year the customer was born
         datatype: int
       - name: gender
-        description: Customer Gender
-        datatype: varchar
+        description: Customer Gender [0 = Male, 1 = Female, 2 = Other]
+        datatype: TINYINT
       - name: preferred_device
         description: Customer preferred device
         datatype: varchar
