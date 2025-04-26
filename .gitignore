@@ -1,0 +1,6 @@
+target/
+dbt_packages/
+logs/
+# Remove Raw Data
+data_sources/
+logs/

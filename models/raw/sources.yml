@@ -1,0 +1,28 @@
+version: 2
+
+sources:
+  - name: raw_duckdb_data
+    schema: main
+    tables:
+      - name: campaign_interactions
+        description: "Data related to customer interactions with campaigns"
+      - name: campaign_master
+        description: "Master data about the campaigns"
+      - name: customers_master
+        description: "Master data about customers"
+      - name: drivers_master
+        description: "Master data about drivers"
+      - name: order_log_incentive_sessions_customer_app_sessions
+        description: "Sessions data from customer app related to incentive logs"
+      - name: order_log_incentive_sessions_driver_incentive_logs
+        description: "Driver-related incentive log data for order sessions"
+      - name: order_log_incentive_sessions_order_status_logs
+        description: "Order status log data related to incentive sessions"
+      - name: order_transactions
+        description: "Data regarding customer orders and their transactions"
+      - name: restaurants_master
+        description: "Master data about restaurants"
+      - name: support_ticket_status_logs
+        description: "Logs related to the status of support tickets"
+      - name: support_tickets
+        description: "Data regarding support tickets and their details"
