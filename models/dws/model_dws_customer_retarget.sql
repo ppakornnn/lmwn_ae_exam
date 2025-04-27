@@ -75,4 +75,4 @@ SELECT
 
 FROM    campaign_profile t1
         LEFT JOIN customer_order_after_retargeting t2 ON t1.campaign_id = t2.campaign_id
-CUBE (t1.campaign_id, t1.campaign_name, t1.targeting_strategy)
+GROUP BY CUBE (t1.campaign_id, t1.campaign_name, t1.targeting_strategy)
