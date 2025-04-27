@@ -33,12 +33,12 @@ models:
         description: Customer preferred device
         datatype: varchar
       # Active Date
-      - name: first_active_date
-        description: The date the customer first became active
-        datatype: date
-      - name: latest_active_date
-        description: The date the customer was last active
-        datatype: date
+      - name: first_active_datetime
+        description: The datetime the customer first became active
+        datatype: timestamp
+      - name: latest_active_datetime
+        description: The datetime the customer was last active
+        datatype: timestamp
       # Customer Order
       - name: total_net_orders
         description: The total number of net orders placed by the customer
@@ -46,18 +46,18 @@ models:
       - name: total_gross_orders
         description: The total number of gross orders placed by the customer
         datatype: int
-      - name: total_spent
+      - name: total_spent_thb
         description: The total amount spent from net orders by the customer
         datatype: int
-      - name: avg_order_value
+      - name: avg_order_value_thb
         description: The average amount spent per order by the customer
         datatype: double
-      - name: first_order_date
-        description: The date of the customer's first order
-        datatype: date
-      - name: latest_order_date
-        description: The date of the customer's last order
-        datatype: date
+      - name: first_order_datetime
+        description: The datetime of the customer's first order
+        datatype: timestamp
+      - name: latest_order_datetime
+        description: The datetime of the customer's last order
+        datatype: timestamp
       - name: most_frequent_restaurant
         description: The restaurant where the customer has placed the most orders
         datatype: varchar
@@ -77,18 +77,18 @@ models:
       - name: first_campaign_id_engagement
         description: The ID of the first campaign the customer engaged with
         datatype: varchar
-      - name: first_campaign_date_engagement
-        description: The date of the customer's first campaign engagement
-        datatype: date
+      - name: first_campaign_datetime_engagement
+        description: The datetime of the customer's first campaign engagement
+        datatype: timestamp
       - name: first_campaign_id_converted
         description: The ID of the first campaign the customer converted
         datatype: varchar
-      - name: first_campaign_date_converted
-        description: The date of the customer's first campaign conversion
-        datatype: date
-      - name: total_campaign_cost
+      - name: first_campaign_datetime_converted
+        description: The datetime of the customer's first campaign conversion
+        datatype: timestamp
+      - name: total_campaign_cost_thb
         description: The total cost of campaigns the customer has engaged with
         datatype: double
-      - name: total_campaign_revenue
+      - name: total_campaign_revenue_thb
         description: The total revenue generated from campaigns the customer has engaged with
         datatype: double
