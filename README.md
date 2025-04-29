@@ -1,6 +1,4 @@
-# **DBT Project Name**
-
-A brief description of your dbt project.
+# **Lineman Analytics Engineer**
 
 ## **Table of Contents**
 - [Overview](#overview)
