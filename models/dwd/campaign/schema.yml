@@ -3,10 +3,16 @@ version: 2
 models:
   - name: model_dim_campaign_profile_view
     description: Campaign Profile Data
+    tests :
+    - dbt_utils.expression_is_true:
+        expression: "budget > 0"
     columns:
       - name: campaign_id
         description: The primary key for this table
         datatype: varchar
+        tests:
+          - not_null
+          - unique
       - name: campaign_name
         description: Campaign Name
         datatype: varchar
@@ -22,30 +28,53 @@ models:
       - name: campaign_type
         description: Campaign Type
         datatype: varchar
+        tests:
+          - accepted_values:
+              values: ['seasonal', 'retargeting', 'acquisition', 'loyalty']
       - name: objective
         description: Campaign Objective
         datatype: varchar
+        tests:
+          - accepted_values:
+              values: ['increase_orders', 'boost_new_customers', 'reactivate_lapsed']
       - name: channel
         description: Campaign Channel
         datatype: varchar
+        tests:
+          - accepted_values:
+              values: ['google', 'tiktok', 'facebook', 'email']
       - name: budget
         description: Campaign budget
         datatype: double
       - name: cost_model
         description: Cost Model
         datatype: varchar
+        tests:
+          - accepted_values:
+              values: ['cpa', 'cpc', 'cpv', 'cpm']
       - name: targeting_strategy
         description: Campaign targeting stratefy
         datatype: varchar
+        tests:
+          - accepted_values:
+              values: ['broad', 'lookalike', 'custom']
       - name: is_active
         description: Flag whether campaign active
         datatype: boolean
+        tests:
+          - not_null
   - name: model_dwd_campaign_interactions_view
     description: Campaign interaction detail
+    tests:
+      - dbt_utils.expression_is_true:
+          expression: "revenue_thb > 0"
     columns:
       - name: interaction_id
         description: The primary key for this table
         datatype: varchar
+        tests:
+          - unique
+          - not_null
       - name: campaign_id
         description: Campaign ID ; Reference to model_dim_campaign_profile_view
         datatype: varchar
@@ -54,18 +83,18 @@ models:
               to: ref('model_dim_campaign_profile_view')
               field: campaign_id
       - name: customer_id
-        description: Customer ID ; Reference to model_id_dim_customers_profile_view
+        description: Customer ID ; Reference to model_dim_customers_profile_view
         datatype: varchar
         tests:
           - relationships:
-              to: ref('model_id_dim_customers_profile_view')
+              to: ref('model_dim_customers_profile_view')
               field: customer_id
       - name: session_id
-        description: Session ID ; Reference to model_id_dwd_customer_app_sessions_view
+        description: Session ID ; Reference to model_dwd_customer_app_sessions_view
         datatype: varchar
         tests:
           - relationships:
-              to: ref('model_id_dwd_customer_app_sessions_view')
+              to: ref('model_dwd_customer_app_sessions_view')
               field: session_id
       - name: order_id
         description: Order ID ; Reference to model_dwd_order_transactions_view
@@ -83,12 +112,21 @@ models:
       - name: event_type
         description: event_type
         datatype: varchar
+        tests:
+          - accepted_values:
+              values: ['conversion', 'click', 'impression']
       - name: platform
         description: Platfrom which releated to campaign
         datatype: varchar
+        tests:
+          - accepted_values:
+              values: ['google', 'facebook', 'tiktok']
       - name: device_type
         description: Device type which user is used
         datatype: varchar
+        tests:
+          - accepted_values:
+              values: ['web', 'ios', 'android']
       - name: ad_cost_thb
         description: advertisement cost for each interaction in Thai Baht
         datatype: double
@@ -98,3 +136,5 @@ models:
       - name: is_new_customer
         description: Flag whether new customer
         datatype: Boolean
+        tests:
+          - not_null

@@ -8,6 +8,9 @@ models:
       - name: order_id
         description: The primary key for this table
         datatype: varchar
+        tests:
+          - not_null
+          - unique
     columns:
       - name: customer_id
         description: Customer ID ; Reference to model_dim_customer_profile_view
@@ -64,6 +67,8 @@ models:
       - name: is_net_order
         description: Flag whether is net order (order_status = 'completed')
         datatype: boolean
+        tests:
+          - not_null
     columns:
       - name: delivery_zone
         description: Delivery Zone
@@ -76,6 +81,8 @@ models:
       - name: is_late_delivery
         description: Flag whether order is late delivery
         datatype: boolean
+        tests:
+          - not_null
     columns:
       - name: delivery_distance_km
         description: Delivery distance in kilometer
@@ -87,6 +94,10 @@ models:
       - name: order_id
         description: The primary key for this table
         datatype: varchar
+        tests:
+          - relationships:
+              to: ref('model_dwd_order_transactions_view')
+              field: order_id
     columns:
       - name: order_status
         description: Order Status

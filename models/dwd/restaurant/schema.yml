@@ -10,6 +10,9 @@ models:
         description: >
           Unique identifier for the restaurant.
         data_type: varchar
+        tests:
+          - not_null
+          - unique
       - name: restaurant_name
         description: >
           The name of the restaurant.
@@ -26,10 +29,16 @@ models:
         description: >
           The average customer rating for the restaurant.
         data_type: double
+        tests:
+          - dbt_utils.accepted_range:
+              min_value: 0
+              max_value: 5
       - name: is_active
         description: >
           Indicates whether the restaurant is currently active (true for active, false for inactive).
         data_type: boolean
+        tests:
+          - not_null
       - name: prep_time_min
         description: >
           The average preparation time for orders at the restaurant, in minutes.

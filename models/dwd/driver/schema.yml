@@ -10,6 +10,9 @@ models:
         description: >
           Unique identifier for the driver.
         data_type: varchar
+        tests:
+          - not_null
+          - unique
       - name: join_date
         description: >
           The date when the driver joined the platform.
@@ -22,14 +25,23 @@ models:
         description: >
           The region where the driver operates.
         data_type: varchar
+        tests:
+          - accepted_values:
+              values: ['metro', 'central', 'north', 'east', 'south']
       - name: is_active
         description: >
           Indicates whether the driver is currently active (1 for active, 0 for inactive).
         data_type: integer
+        tests:
+          - not_null
       - name: driver_rating
         description: >
           The average rating of the driver based on customer feedback.
         data_type: double
+        tests:
+          - dbt_utils.accepted_range:
+              min_value: 0
+              max_value: 5
       - name: bonus_tier
         description: >
           The bonus tier assigned to the driver based on performance metrics.
