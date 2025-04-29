@@ -1,0 +1,40 @@
+version: 2
+
+models:
+  - name: model_ads_campaign_effectiveness_report_monthly
+    description: >
+      This model generates a monthly report on campaign effectiveness, including metrics such as exposure, interaction, 
+      conversion counts, ad costs, and revenue for each campaign.
+    columns:
+      - name: campaign_id
+        description: >
+          Unique identifier for the campaign.
+        data_type: varchar
+      - name: report_month
+        description: >
+          The month for which the campaign metrics are reported, truncated to the first day of the month.
+        data_type: date
+      - name: monthly_cnt_exposure
+        description: >
+          The total number of unique exposures (impressions) for the campaign in the given month.
+        data_type: integer
+      - name: monthly_cnt_interaction
+        description: >
+          The total number of unique interactions (clicks) for the campaign in the given month.
+        data_type: integer
+      - name: monthly_cnt_conversion
+        description: >
+          The total number of unique conversions for the campaign in the given month.
+        data_type: integer
+      - name: monthly_cnt_customer_conversion_completed
+        description: >
+          The total number of unique customers who completed a conversion and whose orders are marked as net orders in the given month.
+        data_type: integer
+      - name: monthly_ad_cost_thb
+        description: >
+          The total advertising cost (in THB) for the campaign in the given month.
+        data_type: double
+      - name: monthly_revenue_thb
+        description: >
+          The total revenue (in THB) generated from net orders for the campaign in the given month.
+        data_type: double

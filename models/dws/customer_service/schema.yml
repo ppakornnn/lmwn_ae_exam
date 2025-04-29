@@ -1,0 +1,44 @@
+version: 2
+
+models:
+  - name: model_dws_customer_service_complaint_summary
+    description: >
+      This model summarizes customer service complaints, including metrics such as ticket counts, resolution status, 
+      resolution duration, and compensation amounts, grouped by issue type and subtype.
+    columns:
+      - name: ticket_open_date
+        description: >
+          The date when the ticket was opened.
+        data_type: date
+      - name: issue_type
+        description: >
+          The type of issue reported in the ticket (e.g., delivery issue, payment issue). Defaults to 'all' if not specified.
+        data_type: varchar
+      - name: issue_sub_type
+        description: >
+          The subtype of the issue reported in the ticket for more granular categorization. Defaults to 'all' if not specified.
+        data_type: varchar
+      - name: cnt_opened_ticket
+        description: >
+          The total number of tickets opened on the given date.
+        data_type: integer
+      - name: cnt_resolved_ticket
+        description: >
+          The total number of tickets resolved on the given date.
+        data_type: integer
+      - name: cnt_unresolved_ticket
+        description: >
+          The total number of tickets that remain unresolved or escalated on the given date.
+        data_type: integer
+      - name: total_duration_resolve_min
+        description: >
+          The total time, in minutes, taken to resolve tickets on the given date.
+        data_type: integer
+      - name: avg_duration_resolve_min
+        description: >
+          The average time, in minutes, taken to resolve tickets on the given date.
+        data_type: double
+      - name: total_compensation_amount_thb
+        description: >
+          The total compensation amount provided for tickets on the given date, in Thai Baht (THB).
+        data_type: double
