@@ -1,0 +1,33 @@
+version: 2
+
+models:
+  - name: model_dim_customers_profile_view
+    description: Customer Profile Data
+    columns:
+      - name: customer_id
+        description: The primary key for this table
+        datatype: varchar
+        tests:
+          - unique
+          - not_null
+      - name: signup_date
+        description: The date the customer signed up
+        datatype: date
+      - name: referral_source
+        description: Acquisition Source
+        datatype: varchar
+      - name: customer_segment
+        description: Customer Segment
+        datatype: varchar
+      - name: is_active
+        description: Flag whether customer active
+        datatype: boolean
+      - name: birth_year
+        description: The year the customer was born
+        datatype: int
+      - name: gender
+        description: Customer Gender [0 = Male, 1 = Female, 2 = Other]
+        datatype: tinyint
+      - name: preferred_device
+        description: Customer preferred device
+        datatype: varchar

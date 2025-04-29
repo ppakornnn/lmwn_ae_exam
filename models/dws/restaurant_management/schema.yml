@@ -1,0 +1,48 @@
+version: 2
+
+models:
+  - name: model_dws_restaurant_profile
+    description: >
+      This model provides a detailed profile of restaurants, including their basic information, order metrics, 
+      and feedback from resolved support tickets.
+    columns:
+      - name: restaurant_id
+        description: >
+          Unique identifier for the restaurant.
+        data_type: varchar
+      - name: restaurant_name
+        description: >
+          The name of the restaurant.
+        data_type: varchar
+      - name: category
+        description: >
+          The category or type of cuisine offered by the restaurant (e.g., fast food, fine dining).
+        data_type: varchar
+      - name: city
+        description: >
+          The city where the restaurant is located.
+        data_type: varchar
+      - name: average_rating
+        description: >
+          The average customer rating for the restaurant.
+        data_type: double
+      - name: is_active
+        description: >
+          Indicates whether the restaurant is currently active (true for active, false for inactive).
+        data_type: boolean
+      - name: prep_time_min
+        description: >
+          The average preparation time for orders at the restaurant, in minutes.
+        data_type: integer
+      - name: cnt_assigned_order
+        description: >
+          The total number of orders assigned to the restaurant.
+        data_type: integer
+      - name: cnt_completed_order
+        description: >
+          The total number of completed orders for the restaurant.
+        data_type: integer
+      - name: feedback_restaurant
+        description: >
+          An array of feedback details for the restaurant, including issue subtypes and their respective counts.
+        data_type: array

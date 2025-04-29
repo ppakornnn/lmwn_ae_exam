@@ -1,0 +1,64 @@
+version: 2
+
+models:
+  - name: model_dwd_support_ticket_view
+    description: >
+      This model creates a view of support tickets, including details about the ticket, associated entities, 
+      issue types, resolution status, and customer satisfaction metrics.
+    columns:
+      - name: ticket_id
+        description: >
+          Unique identifier for the support ticket.
+        data_type: varchar
+      - name: order_id
+        description: >
+          Unique identifier for the order associated with the ticket.
+        data_type: varchar
+      - name: customer_id
+        description: >
+          Unique identifier for the customer associated with the ticket.
+        data_type: varchar
+      - name: driver_id
+        description: >
+          Unique identifier for the driver associated with the ticket.
+        data_type: varchar
+      - name: restaurant_id
+        description: >
+          Unique identifier for the restaurant associated with the ticket.
+        data_type: varchar
+      - name: issue_type
+        description: >
+          The type of issue reported in the ticket (e.g., delivery issue, payment issue).
+        data_type: varchar
+      - name: issue_sub_type
+        description: >
+          The subtype of the issue reported in the ticket for more granular categorization.
+        data_type: varchar
+      - name: channel
+        description: >
+          The channel through which the ticket was created (e.g., app, call center).
+        data_type: varchar
+      - name: opened_datetime
+        description: >
+          The date and time when the ticket was opened.
+        data_type: timestamp
+      - name: resolved_datetime
+        description: >
+          The date and time when the ticket was resolved.
+        data_type: timestamp
+      - name: status
+        description: >
+          The current status of the ticket (e.g., open, resolved, pending).
+        data_type: varchar
+      - name: csat_score
+        description: >
+          The customer satisfaction score associated with the resolution of the ticket.
+        data_type: integer
+      - name: compensation_amount_thb
+        description: >
+          The amount of compensation provided for the ticket, in Thai Baht (THB).
+        data_type: double
+      - name: resolved_by_agent_id
+        description: >
+          The unique identifier of the agent who resolved the ticket.
+        data_type: varchar

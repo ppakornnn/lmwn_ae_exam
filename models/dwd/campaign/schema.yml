@@ -1,0 +1,100 @@
+version: 2
+
+models:
+  - name: model_dim_campaign_profile_view
+    description: Campaign Profile Data
+    columns:
+      - name: campaign_id
+        description: The primary key for this table
+        datatype: varchar
+      - name: campaign_name
+        description: Campaign Name
+        datatype: varchar
+      - name: start_date
+        description: Campaign Start Date
+        datatype: date
+      - name: end_date
+        description: Campaign End Date
+        datatype: date
+      - name: campaign_duration_day
+        description: Campaign Duration in day
+        datatype: bigint
+      - name: campaign_type
+        description: Campaign Type
+        datatype: varchar
+      - name: objective
+        description: Campaign Objective
+        datatype: varchar
+      - name: channel
+        description: Campaign Channel
+        datatype: varchar
+      - name: budget
+        description: Campaign budget
+        datatype: double
+      - name: cost_model
+        description: Cost Model
+        datatype: varchar
+      - name: targeting_strategy
+        description: Campaign targeting stratefy
+        datatype: varchar
+      - name: is_active
+        description: Flag whether campaign active
+        datatype: boolean
+  - name: model_dwd_campaign_interactions_view
+    description: Campaign interaction detail
+    columns:
+      - name: interaction_id
+        description: The primary key for this table
+        datatype: varchar
+      - name: campaign_id
+        description: Campaign ID ; Reference to model_dim_campaign_profile_view
+        datatype: varchar
+        tests:
+          - relationships:
+              to: ref('model_dim_campaign_profile_view')
+              field: campaign_id
+      - name: customer_id
+        description: Customer ID ; Reference to model_id_dim_customers_profile_view
+        datatype: varchar
+        tests:
+          - relationships:
+              to: ref('model_id_dim_customers_profile_view')
+              field: customer_id
+      - name: session_id
+        description: Session ID ; Reference to model_id_dwd_customer_app_sessions_view
+        datatype: varchar
+        tests:
+          - relationships:
+              to: ref('model_id_dwd_customer_app_sessions_view')
+              field: session_id
+      - name: order_id
+        description: Order ID ; Reference to model_dwd_order_transactions_view
+        datatype: varchar
+        tests:
+          - relationships:
+              to: ref('model_dwd_order_transactions_view')
+              field: order_id
+      - name: interaction_date
+        description: User interaction date
+        datatype: varchar
+      - name: interaction_datetime
+        description: User interaction datetime
+        datatype: timestamp
+      - name: event_type
+        description: event_type
+        datatype: varchar
+      - name: platform
+        description: Platfrom which releated to campaign
+        datatype: varchar
+      - name: device_type
+        description: Device type which user is used
+        datatype: varchar
+      - name: ad_cost_thb
+        description: advertisement cost for each interaction in Thai Baht
+        datatype: double
+      - name: revenue_thb
+        description: Revenue from each order by these campaign in Thai Baht
+        datatype: double
+      - name: is_new_customer
+        description: Flag whether new customer
+        datatype: Boolean

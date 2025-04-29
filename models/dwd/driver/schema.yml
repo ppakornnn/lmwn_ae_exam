@@ -1,0 +1,36 @@
+version: 2
+
+models:
+  - name: model_dim_drivers_profile_view
+    description: >
+      This model creates a view of driver profiles, including details such as join date, vehicle type, region, 
+      active status, rating, and bonus tier.
+    columns:
+      - name: driver_id
+        description: >
+          Unique identifier for the driver.
+        data_type: varchar
+      - name: join_date
+        description: >
+          The date when the driver joined the platform.
+        data_type: date
+      - name: vehicle_type
+        description: >
+          The type of vehicle used by the driver (e.g., bike, car).
+        data_type: varchar
+      - name: region
+        description: >
+          The region where the driver operates.
+        data_type: varchar
+      - name: is_active
+        description: >
+          Indicates whether the driver is currently active (1 for active, 0 for inactive).
+        data_type: integer
+      - name: driver_rating
+        description: >
+          The average rating of the driver based on customer feedback.
+        data_type: double
+      - name: bonus_tier
+        description: >
+          The bonus tier assigned to the driver based on performance metrics.
+        data_type: varchar

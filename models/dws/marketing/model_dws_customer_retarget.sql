@@ -57,22 +57,24 @@ WITH order_transactions AS (
                 ELSE false
                 END AS is_retain
         ,   SUM(total_amount_thb)       AS total_spend_after_retarget_thb
-        ,   DATE_DIFF('day', CAST(t1.first_campaign_order_datetime AS DATE), CAST(t2.order_datetime AS DATE))   AS time_gap_original_return_order_day
+        ,   DATE_DIFF('day', CAST(t1.first_campaign_order_datetime AS DATE), CAST(MIN(t2.order_datetime) AS DATE))   AS time_gap_original_return_order_day
     FROM    first_order_retargeting t1
             LEFT JOIN order_transactions t2 ON t1.customer_id = t2.customer_id AND t1.first_campaign_order_datetime < t2.order_datetime
     GROUP BY 1,2,3
 )
 
 SELECT
-            COALESCE(t1.campaign_id, 0)                                                                     AS campaign_id
-        ,   COALESCE(t1.campaign_name, 0)                                                                   AS campaign_name 
-        ,   COALESCE(t1.targeting_strategy, 0)                                                              AS targeting_strategy
-        ,   COUNT(DISTINCT t2.customer_id)                                                                  AS cnt_customers_targeted
-        ,   (1.00 * COUNT(DISTINCT CASE WHEN t2.is_returned = true END)) / COUNT(DISTINCT t2.customer_id)   AS ratio_returned_customer
-        ,   SUM(total_spend_after_retarget_thb)                                                             AS total_spend_after_retarget_thb    
-        ,   AVG(time_gap_original_return_order_day)                                                         AS avg_time_gap_original_return_order_day
-        ,   (1.00 * COUNT(DISTINCT CASE WHEN t2.is_retain = true END)) / COUNT(DISTINCT t2.customer_id)     AS ratio_retained_customer
+            COALESCE(t1.campaign_id, 'all')                                                                                         AS campaign_id
+        ,   COALESCE(t1.targeting_strategy, 'all')                                                                                  AS targeting_strategy
+        ,   COUNT(DISTINCT t2.customer_id)                                                                                      AS cnt_customers_targeted
+        ,   (1.00 * COUNT(DISTINCT CASE WHEN t2.is_returned = true THEN t2.customer_id END)) / COUNT(DISTINCT t2.customer_id)   AS ratio_returned_customer
+        ,   SUM(total_spend_after_retarget_thb)                                                                                 AS total_spend_after_retarget_thb    
+        ,   AVG(time_gap_original_return_order_day)                                                                             AS avg_time_gap_original_return_order_day
+        ,   (1.00 * COUNT(DISTINCT CASE WHEN t2.is_retain = true THEN t2.customer_id END)) / COUNT(DISTINCT t2.customer_id)     AS ratio_retained_customer
 
 FROM    campaign_profile t1
         LEFT JOIN customer_order_after_retargeting t2 ON t1.campaign_id = t2.campaign_id
-GROUP BY CUBE (t1.campaign_id, t1.campaign_name, t1.targeting_strategy)
+GROUP BY GROUPING SETS (
+        (t1.campaign_id, t1.targeting_strategy)
+    ,   (t1.targeting_strategy)
+)

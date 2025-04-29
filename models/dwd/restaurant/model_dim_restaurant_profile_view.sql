@@ -4,7 +4,7 @@
 
 SELECT
         restaurant_id
-    ,   name
+    ,   name                            AS restaurant_name
     ,   category
     ,   city
     ,   average_rating

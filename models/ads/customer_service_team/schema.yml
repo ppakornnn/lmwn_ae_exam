@@ -1,0 +1,110 @@
+version: 2
+
+models:
+  - name: model_ads_complaint_summary_monthly
+    description: >
+      This model provides a monthly summary of customer service complaints, including metrics such as the total number 
+      of opened tickets, unresolved tickets, average resolution time, and total compensation amounts.
+    columns:
+      - name: report_month
+        description: >
+          The month for which the complaint metrics are summarized, truncated to the first day of the month.
+        data_type: date
+      - name: issue_type
+        description: >
+          The type of issue reported in the tickets (e.g., delivery issue, payment issue).
+        data_type: varchar
+      - name: issue_sub_type
+        description: >
+          The subtype of the issue reported in the tickets for more granular categorization.
+        data_type: varchar
+      - name: total_opened_ticket
+        description: >
+          The total number of tickets opened in the given month for the specified issue type and subtype.
+        data_type: integer
+      - name: avg_time_taken_to_resolve_min
+        description: >
+          The average time, in minutes, taken to resolve tickets in the given month for the specified issue type and subtype.
+        data_type: double
+      - name: total_unresolved_ticket
+        description: >
+          The total number of tickets that remain unresolved in the given month for the specified issue type and subtype.
+        data_type: integer
+      - name: total_compensation_amount_thb
+        description: >
+          The total compensation amount provided for tickets in the given month, in Thai Baht (THB).
+        data_type: double
+
+  - name: model_ads_driver_high_reported
+    description: >
+      This model identifies drivers with high complaint counts, providing metrics such as the total number of complaints, 
+      the ratio of complaints to assigned orders, and the most frequently reported complaint subtype.
+    columns:
+      - name: driver_id
+        description: >
+          Unique identifier for the driver.
+        data_type: varchar
+      - name: cnt_assigned_order
+        description: >
+          The total number of orders assigned to the driver.
+        data_type: integer
+      - name: total_complainted
+        description: >
+          The total number of complaints reported for the driver.
+        data_type: integer
+      - name: ratio_complaint_total_assign_order
+        description: >
+          The ratio of total complaints to the total number of assigned orders for the driver.
+        data_type: double
+      - name: most_complated_sub_type
+        description: >
+          The most frequently reported complaint subtype for the driver, based on the highest count of issues.
+        data_type: varchar
+
+  - name: model_ads_reported_summary
+    description: >
+      This model summarizes reported issues, providing metrics such as the average resolution time and 
+      average customer satisfaction score (CSAT) for each issue type and subtype.
+    columns:
+      - name: issue_type
+        description: >
+          The type of issue reported in the support tickets (e.g., delivery issue, payment issue).
+        data_type: varchar
+      - name: issue_sub_type
+        description: >
+          The subtype of the issue reported in the support tickets for more granular categorization.
+        data_type: varchar
+      - name: avg_duration_resolve_min
+        description: >
+          The average time, in minutes, taken to resolve tickets for the given issue type and subtype.
+        data_type: double
+      - name: avg_csat_score
+        description: >
+          The average customer satisfaction score (CSAT) for tickets resolved for the given issue type and subtype.
+        data_type: double
+
+  - name: model_ads_restaurant_high_reported
+    description: >
+      This model identifies restaurants with high complaint counts, providing metrics such as the total number of complaints, 
+      the ratio of complaints to assigned orders, and the most frequently reported complaint subtype.
+    columns:
+      - name: restaurant_id
+        description: >
+          Unique identifier for the restaurant.
+        data_type: varchar
+      - name: cnt_assigned_order
+        description: >
+          The total number of orders assigned to the restaurant.
+        data_type: integer
+      - name: total_complainted
+        description: >
+          The total number of complaints reported for the restaurant.
+        data_type: integer
+      - name: ratio_complaint_total_assign_order
+        description: >
+          The ratio of total complaints to the total number of assigned orders for the restaurant.
+        data_type: double
+      - name: most_complained_sub_type
+        description: >
+          The most frequently reported complaint subtype for the restaurant, based on the highest count of issues.
+        data_type: varchar

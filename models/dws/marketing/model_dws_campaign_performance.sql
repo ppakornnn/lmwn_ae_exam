@@ -6,7 +6,7 @@ WITH dim_date AS (
     SELECT
             date_day        AS report_date
 
-    FROM    {{ ref('dim_date') }}
+    FROM    {{ ref('model_dim_date') }}
     WHERE
         TRUE
         AND date_day BETWEEN CAST('2023-12-31' AS DATE) AND CAST('2024-12-30' AS DATE)
