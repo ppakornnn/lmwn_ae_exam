@@ -1,0 +1,32 @@
+version: 2
+
+models:
+  - name: model_ads_driver_incentive_performance
+    description: >
+      This model evaluates the performance of driver incentive programs, providing metrics such as the number of completed orders, 
+      average delivery time, acceptance ratio, total bonus amount paid, and revenue generated for each incentive program.
+    columns:
+      - name: incentive_program
+        description: >
+          The name or type of the incentive program applied to drivers.
+        data_type: varchar
+      - name: cnt_completed_order
+        description: >
+          The total number of completed orders that qualified for the incentive program.
+        data_type: integer
+      - name: avg_delivery_time_min
+        description: >
+          The average delivery time, in minutes, for completed orders under the incentive program.
+        data_type: double
+      - name: acceptance_ratio
+        description: >
+          The ratio of accepted orders to total orders under the incentive program.
+        data_type: double
+      - name: bonus_amount_paid_thb
+        description: >
+          The total bonus amount paid to drivers under the incentive program, in Thai Baht (THB).
+        data_type: double
+      - name: revenue_thb
+        description: >
+          The total revenue generated from orders under the incentive program, in Thai Baht (THB).
+        data_type: double

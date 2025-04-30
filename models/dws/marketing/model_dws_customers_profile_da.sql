@@ -1,5 +1,5 @@
 {{ config(
-    materialized='incremental'
+    materialized='table'
 ) }}
 
 WITH customers_master AS (
