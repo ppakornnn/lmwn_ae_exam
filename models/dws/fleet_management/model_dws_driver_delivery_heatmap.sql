@@ -136,7 +136,7 @@ WITH driver_profile AS (
 ,   delivery_zone_agg AS (
     SELECT
             delivery_zone
-        ,   COALESCE(city, 'all')                                                    AS city
+        ,   COALESCE(city, 'all')                                                       AS city
         ,   SUM(cnt_delivery_request)                                                   AS cnt_delivery_request
         ,   SUM(cnt_complete_order)                                                     AS cnt_complete_order
         ,   (1.00 * SUM(cnt_complete_order)) / SUM(cnt_delivery_request)                AS completion_ratio
@@ -162,6 +162,7 @@ SELECT
     ,   t1.avg_delivery_speed_kmh
     ,   t1.cnt_late_delivery
     ,   t2.cnt_driver_active
+    ,   (1.00 * cnt_delivery_request) / t2.cnt_driver_active        AS delivery_request_driver_active_ratio
 
 FROM    delivery_zone_agg t1
         LEFT JOIN driver_supply_agg t2 ON t1.delivery_zone = t2.delivery_zone AND t1.city = 'all'
