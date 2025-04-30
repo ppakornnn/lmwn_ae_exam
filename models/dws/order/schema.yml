@@ -1,0 +1,76 @@
+version: 2
+
+models:
+  - name: model_dws_order_transactions_ue
+    description: >
+      This model provides a unified view of order transactions, including details about campaigns, driver incentives, 
+      compensation costs, and revenue and cost metrics for each order.
+    columns:
+      - name: order_id
+        description: >
+          Unique identifier for the order.
+        data_type: varchar
+      - name: campaign_id
+        description: >
+          Unique identifier for the campaign associated with the order.
+        data_type: varchar
+      - name: driver_id
+        description: >
+          Unique identifier for the driver who completed the order.
+        data_type: varchar
+      - name: incentive_program
+        description: >
+          The name or type of the incentive program applied to the driver for the order.
+        data_type: varchar
+      - name: order_datetime
+        description: >
+          The date and time when the order was placed.
+        data_type: timestamp
+      - name: order_status
+        description: >
+          The current status of the order (e.g., completed, canceled).
+        data_type: varchar
+      - name: is_net_order
+        description: >
+          Indicates whether the order is a net order (true for net orders, false otherwise).
+        data_type: boolean
+      - name: is_incentive_order
+        description: >
+          Indicates whether the order is associated with a driver incentive program (true if yes, false otherwise).
+        data_type: boolean
+      - name: is_compensation_order
+        description: >
+          Indicates whether the order is associated with a compensation cost (true if yes, false otherwise).
+        data_type: boolean
+      - name: delivery_zone
+        description: >
+          The delivery zone where the order was completed.
+        data_type: varchar
+      - name: payment_method
+        description: >
+          The payment method used for the order (e.g., cash, credit card).
+        data_type: varchar
+      - name: total_amount_thb
+        description: >
+          The total amount paid for the order, in Thai Baht (THB).
+        data_type: double
+      - name: revenue_thb
+        description: >
+          The revenue generated from the order, in Thai Baht (THB).
+        data_type: double
+      - name: ad_cost_thb
+        description: >
+          The advertising cost associated with the order, in Thai Baht (THB).
+        data_type: double
+      - name: incentive_cost_thb
+        description: >
+          The incentive cost associated with the order, in Thai Baht (THB).
+        data_type: double
+      - name: compensation_cost_thb
+        description: >
+          The compensation cost associated with the order, in Thai Baht (THB).
+        data_type: double
+      - name: cost_thb
+        description: >
+          The total cost associated with the order, including advertising, incentive, and compensation costs, in Thai Baht (THB).
+        data_type: double

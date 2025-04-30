@@ -2,7 +2,6 @@
     materialized='table'
 ) }}
 
-/*Shown*/
 
 WITH driver_profile_complaint_type AS (
     SELECT

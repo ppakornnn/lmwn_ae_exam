@@ -22,6 +22,10 @@ models:
         description: >
           The total number of deliveries completed by the driver in the specified region and date.
         data_type: integer
+      - name: delivery_request_driver_active_ratio
+        description: >
+          Ratio between delivery requested and driver active
+        data_type: double
 
   - name: model_dws_driver_profile
     description: >

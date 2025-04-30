@@ -46,3 +46,56 @@ models:
         description: >
           The bonus tier assigned to the driver based on performance metrics.
         data_type: varchar
+version: 2
+
+models:
+  - name: model_dwd_drivers_incentive_view
+    description: >
+      This model creates a view of driver incentives, including details about incentive programs, bonus amounts, 
+      delivery targets, and the calculated bonus amount per order.
+    columns:
+      - name: log_id
+        description: >
+          Unique identifier for the incentive log entry.
+        data_type: varchar
+        tests:
+          - not_null
+          - unique
+      - name: driver_id
+        description: >
+          Unique identifier for the driver associated with the incentive program.
+        data_type: varchar
+        tests:
+          - not_null
+      - name: incentive_program
+        description: >
+          The name or type of the incentive program.
+        data_type: varchar
+      - name: bonus_amount_thb
+        description: >
+          The total bonus amount provided to the driver under the incentive program, in Thai Baht (THB).
+        data_type: double
+      - name: applied_date
+        description: >
+          The date when the incentive program was applied to the driver.
+        data_type: date
+      - name: delivery_target
+        description: >
+          The target number of deliveries required to qualify for the incentive program.
+        data_type: integer
+      - name: actual_deliveries
+        description: >
+          The actual number of deliveries completed by the driver during the incentive program.
+        data_type: integer
+      - name: bonus_qualified
+        description: >
+          Indicates whether the driver qualified for the bonus (true if qualified, false otherwise).
+        data_type: boolean
+      - name: bonus_amount_per_order_thb
+        description: >
+          The calculated bonus amount per order, in Thai Baht (THB), for the incentive program.
+        data_type: double
+      - name: region
+        description: >
+          The region where the driver operates under the incentive program.
+        data_type: varchar
