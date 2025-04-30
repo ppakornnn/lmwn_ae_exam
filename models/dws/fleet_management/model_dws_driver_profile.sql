@@ -47,7 +47,7 @@ WITH driver_profile AS (
     WHERE
         TRUE
         AND status = 'resolved'
-        AND issue_type = 'driver'
+        AND issue_type = 'rider'
 )
 
 /* Aggregation */
