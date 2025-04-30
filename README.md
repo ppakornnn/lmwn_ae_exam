@@ -1,6 +1,4 @@
-# **DBT Project Name**
-
-A brief description of your dbt project.
+# **Lineman Analytics Engineer Exam**
 
 ## **Table of Contents**
 - [Overview](#overview)
@@ -65,7 +63,7 @@ dbt docs serve
 ## **Project Structure**
 Quick overview of the structure of lmwn_ae_exam project:
 ``` bash
-your-dbt-project/
+lmwn_ae_exam/
 │
 ├── models/                  # Where all the dbt models are stored\
 │   ├── dwd/                 # Data warehouse Details (Raw data transformations)
