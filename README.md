@@ -7,6 +7,7 @@
 - [Project Structure](#project-structure)
 - [Dependencies](#dependencies)
 - [Testing](#testing)
+- [Appendix](#appendix)
 
 ## **Overview**
 This is a dbt project for **LMWN Analytics Engineer Exam**, Which simulate as AE for Food Delivery to create report for Driver, Marketing and CS team and transform raw data into meaningful insights using **[dbt]**.
@@ -75,6 +76,7 @@ lmwn_ae_exam/
 ├── macros/                  # Custom macros
 ├── tests/                   # Custom tests for data validation
 ├── analysis/                # Analysis files
+├── appendix/                # Contain each requirements description and table
 ├── dbt_project.yml          # Main dbt configuration file
 ├── packages.yml             # dbt packages
 └── requirements.txt         # Python dependencies
@@ -107,3 +109,6 @@ You can run tests using the following dbt command:
 ``` bash
 dbt test
 ```
+
+## **Appendix**
+For each requirements and table can be find in appendix folder
