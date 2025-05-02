@@ -6,28 +6,31 @@ models:
     description: Order detail
     columns:
       - name: order_id
-        description: The primary key for this table
+        description: >
+          The primary key for this table
         datatype: varchar
         tests:
           - not_null
           - unique
-    columns:
+
       - name: customer_id
-        description: Customer ID ; Reference to model_dim_customer_profile_view
+        description: >
+          Customer ID ; Reference to model_dim_customer_profile_view
         datatype: varchar
         tests:
           - relationships:
               to: ref('model_dim_customers_profile_view')
               field: customer_id
-    columns:
+
       - name: restaurant_id
-        description: Restaurant ID ; Reference to model_dim_restaurant_profile_view
+        description: >
+          Restaurant ID ; Reference to model_dim_restaurant_profile_view
         datatype: varchar
         tests:
           - relationships:
               to: ref('model_dim_restaurant_profile_view')
               field: restaurant_id
-    columns:
+
       - name: driver_id
         description: Driver ID ; Reference to model_dim_driver_profile_view
         datatype: varchar
@@ -35,7 +38,7 @@ models:
           - relationships:
               to: ref('model_dim_driver_profile_view')
               field: driver_id
-    columns:
+
       - name: campaign_id
         description: Campaign ID ; Reference to model_dim_campaign_profile_view
         datatype: varchar
@@ -43,51 +46,47 @@ models:
           - relationships:
               to: ref('model_dim_campaign_profile_view')
               field: campaign_id
-    columns:
+
       - name: order_date
         description: Order Create Date
         datatype: date
-    columns:
+
       - name: order_datetime
         description: Order Create Datetime
         datatype: timestamp
-    columns:
+
       - name: pickup_datetime
         description: Pickup Create Datetime
         datatype: timestamp
-    columns:
+
       - name: delivery_datetime
         description: Delivery Create Datetime
         datatype: timestamp
-    columns:
-      - name: order_status
-        description: Order Status
-        datatype: varchar
-    columns:
+
       - name: is_net_order
         description: Flag whether is net order (order_status = 'completed')
         datatype: boolean
         tests:
           - not_null
-    columns:
+
       - name: delivery_zone
         description: Delivery Zone
         datatype: varchar
-    columns:
+
       - name: total_amount_thb
         description: Total order amount in Thai Baht
         datatype: double
-    columns:
+
       - name: is_late_delivery
         description: Flag whether order is late delivery
         datatype: boolean
         tests:
           - not_null
-    columns:
+
       - name: delivery_distance_km
         description: Delivery distance in kilometer
         datatype: double
-        
+
   - name: model_dwd_order_delivery_view
     description: Order Delivery detail
     columns:
@@ -98,25 +97,31 @@ models:
           - relationships:
               to: ref('model_dwd_order_transactions_view')
               field: order_id
-    columns:
+
       - name: order_status
         description: Order Status
         datatype: varchar
+
       - name: order_create_datetime
         description: Order create datetime
         datatype: timestamp
+
       - name: order_accepted_datetime
         description: Order accepted datetime
         datatype: timestamp
+
       - name: order_picked_up_datetime
         description: Order picked up datetime
         datatype: timestamp
+
       - name: order_completed_datetime
         description: Order completed datetime
         datatype: timestamp
+
       - name: order_failed_datetime
         description: Order failed datetime
         datatype: timestamp
+
       - name: order_canceled_datetime
         description: Order canceled datetime
         datatype: timestamp

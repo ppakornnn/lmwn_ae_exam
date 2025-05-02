@@ -112,4 +112,20 @@ SELECT
     ,   SUM(ad_cost_thb)                                    AS total_ad_cost_thb
 
 FROM    new_customer_campaign_interaction
-GROUP BY CUBE(campaign_type, objective, channel, platform, campaign_id)
+GROUP BY GROUPING SETS (
+        (campaign_type, objective, channel, platform, campaign_id)
+    ,   (campaign_type)
+    ,   (objective)
+    ,   (channel)
+    ,   (platform)
+    ,   (campaign_type, objective)
+    ,   (campaign_type, channel)
+    ,   (campaign_type, platform)
+    ,   (objective, channel)
+    ,   (objective, platform)
+    ,   (channel, platform)
+    ,   (campaign_type, objective, channel)
+    ,   (campaign_type, objective, platform)
+    ,   (objective, channel, platform)
+    ,   (campaign_type, objective, channel, platform)
+)

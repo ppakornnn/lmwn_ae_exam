@@ -58,6 +58,7 @@ dbt run --models <model_name>
 ```
 - **Check for model documentation**
 ``` bash
+dbt docs generate
 dbt docs serve
 ```
 
