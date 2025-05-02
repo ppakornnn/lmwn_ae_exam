@@ -64,8 +64,8 @@ WITH order_transactions AS (
 )
 
 SELECT
-            COALESCE(t1.campaign_id, 'all')                                                                                         AS campaign_id
-        ,   COALESCE(t1.targeting_strategy, 'all')                                                                                  AS targeting_strategy
+            COALESCE(t1.campaign_id, 'all')                                                                                     AS campaign_id
+        ,   COALESCE(t1.targeting_strategy, 'all')                                                                              AS targeting_strategy
         ,   COUNT(DISTINCT t2.customer_id)                                                                                      AS cnt_customers_targeted
         ,   (1.00 * COUNT(DISTINCT CASE WHEN t2.is_returned = true THEN t2.customer_id END)) / COUNT(DISTINCT t2.customer_id)   AS ratio_returned_customer
         ,   SUM(total_spend_after_retarget_thb)                                                                                 AS total_spend_after_retarget_thb    

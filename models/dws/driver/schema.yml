@@ -1,0 +1,118 @@
+version: 2
+
+models:
+  - name: model_dws_driver_delivery_heatmap
+    description: >
+      This model provides a heatmap of driver delivery activity, including metrics such as delivery requests, 
+      completion ratios, average delivery times, late deliveries, and driver supply across delivery zones.
+    columns:
+      - name: delivery_zone
+        description: >
+          The delivery zone where the activity occurred.
+        data_type: varchar
+        tests:
+          - not_null
+      - name: city
+        description: >
+          The city associated with the delivery zone. Defaults to 'all' if not specified.
+        data_type: varchar
+      - name: cnt_delivery_request
+        description: >
+          The total number of delivery requests in the delivery zone.
+        data_type: integer
+      - name: cnt_complete_order
+        description: >
+          The total number of completed orders in the delivery zone.
+        data_type: integer
+      - name: completion_ratio
+        description: >
+          The ratio of completed orders to total delivery requests in the delivery zone.
+        data_type: double
+      - name: avg_delivery_time_sec
+        description: >
+          The average delivery time, in seconds, for completed orders in the delivery zone.
+        data_type: double
+      - name: cnt_delivery_cancel_unavailable_driver
+        description: >
+          The total number of delivery requests canceled due to unavailable drivers in the delivery zone.
+        data_type: integer
+      - name: avg_delivery_speed_kmh
+        description: >
+          The average delivery speed, in kilometers per hour, for completed orders in the delivery zone.
+        data_type: double
+      - name: cnt_late_delivery
+        description: >
+          The total number of late deliveries reported in the delivery zone.
+        data_type: integer
+      - name: cnt_driver_active
+        description: >
+          The total number of active drivers available in the delivery zone.
+        data_type: integer
+      - name: delivery_request_driver_active_ratio
+        description: >
+          The ratio of delivery requests to active drivers in the delivery zone.
+        data_type: double
+
+version: 2
+
+models:
+  - name: model_dws_driver_profile
+    description: >
+      This model provides a detailed profile of drivers, including their basic information, performance metrics, 
+      and feedback from resolved support tickets.
+    columns:
+      - name: driver_id
+        description: >
+          Unique identifier for the driver.
+        data_type: varchar
+        tests:
+          - not_null
+          - unique
+      - name: join_date
+        description: >
+          The date when the driver joined the platform.
+        data_type: date
+      - name: vehicle_type
+        description: >
+          The type of vehicle used by the driver (e.g., bike, car).
+        data_type: varchar
+      - name: region
+        description: >
+          The region where the driver operates.
+        data_type: varchar
+      - name: is_active
+        description: >
+          Indicates whether the driver is currently active (true for active, false for inactive).
+        data_type: boolean
+      - name: driver_rating
+        description: >
+          The average rating of the driver based on customer feedback.
+        data_type: double
+      - name: bonus_tier
+        description: >
+          The bonus tier assigned to the driver based on performance metrics.
+        data_type: varchar
+      - name: cnt_assigned_order
+        description: >
+          The total number of orders assigned to the driver.
+        data_type: integer
+      - name: cnt_completed_order
+        description: >
+          The total number of completed orders by the driver.
+        data_type: integer
+      - name: avg_resp_accepted_order_sec
+        description: >
+          The average response time, in seconds, for the driver to accept an order.
+        data_type: double
+      - name: avg_duration_create_complete_sec
+        description: >
+          The average time, in seconds, from order creation to order completion for the driver.
+        data_type: double
+      - name: cnt_late_delivery
+        description: >
+          The total number of late deliveries by the driver.
+        data_type: integer
+      - name: feedback_driver
+        description: >
+          An array of feedback details for the driver, including issue subtypes and their respective counts.
+        data_type: array<STRUCT(issue_sub_type varchar, cnt_issue_sub_type int)>

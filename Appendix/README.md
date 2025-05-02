@@ -27,8 +27,8 @@
       * For purchase after interacting only considered "conversion" event type
 
     * **Table:**
-       * model_ads_campaign_effectiveness_report_monthly
-       * models\ads\performance_marketing_team\model_ads_campaign_effectiveness_report_monthly.sql
+       * report_ads_campaign_effectiveness_report_monthly
+       * models\ads\performance_marketing_team\report_ads_campaign_effectiveness_report_monthly.sql
 
   * ## **Customer Acquisition Report**  
     * **Business Objective:** Understand how successful each campaign is at acquiring new customers and how those customers behave post-acquisition.  
@@ -46,8 +46,8 @@
       * For purchase after interacting only considered "conversion" event type
 
     * **Directory:**
-       * **Table** : model_dws_customer_acquisition
-       * **Path** : models\dws\marketing\model_dws_customer_acquisition.sql
+       * **Table** : report_ads_campaign_customer_acquisition_performance
+       * **Path** : models\ads\performance_marketing_team\report_ads_campaign_customer_acquisition_performance.sql
 
 
   * ## **Retargeting Performance Report**  
@@ -66,8 +66,8 @@
       * For purchase after interacting only considered "conversion" event type
 
     * **Directory:**
-       * **Table** : model_dws_customer_retarget
-       * **Path** : models\dws\marketing\model_dws_customer_retarget.sql
+       * **Table** : report_ads_campaign_customer_retarget_performance
+       * **Path** : models\ads\performance_marketing_team\report_ads_campaign_customer_retarget_performance.sql
 
 # Fleet Management Team
   * ## **Driver Performance Report**  
@@ -84,8 +84,8 @@
       * feedback_driver is only consider ticket which has "driver" issue_type
 
     * **Directory:**
-       * **Table** : model_dws_driver_profile
-       * **Path** : models\dws\fleet_management\model_dws_driver_profile.sql
+       * **Table** : report_ads_driver_performance
+       * **Path** : models\ads\fleet_management_team\report_ads_driver_performance.sql
 
 
   * ## **Delivery Zone Heatmap Report**  
@@ -102,8 +102,8 @@
       * feedback_driver is only consider ticket which has "driver" issue_type
       * cancellation due to unavailable drivers meaning order without accepted datetime
     * **Directory:**
-       * **Table** : model_dws_driver_delivery_heatmap
-       * **Path** : models\dws\fleet_management\model_dws_driver_delivery_heatmap.sql
+       * **Table** : report_ads_driver_delivery_zone_heatmap
+       * **Path** : models\ads\fleet_management_team\report_ads_driver_delivery_zone_heatmap.sql
 
   * ## **Driver Incentive Impact Report**  
     * **Business Objective:** Measure whether incentive programs for drivers (e.g., bonuses) lead to improved performance or just higher costs.  
@@ -122,8 +122,8 @@
             model_dws_order_transactions_ue
 
     * **Directory:**
-       * **Table** : model_ads_driver_incentive_performance
-       * **Path** : models\ads\fleet_management_team\model_ads_driver_incentive_performance.sql
+       * **Table** : report_ads_driver_incentive_performance
+       * **Path** : models\ads\fleet_management_team\report_ads_driver_incentive_performance.sql
 
  # Customer Service Team  
   * ## **Complaint Summary Dashboard**  
@@ -141,8 +141,8 @@
       * For "all" values in each columns meaning aggregate every record in each column
 
     * **Directory:**
-       * **Table** : model_ads_complaint_summary_monthly
-       * **Path** : models\ads\customer_service_team\model_ads_complaint_summary_monthly.sql
+       * **Table** : report_ads_complaint_summary_monthly
+       * **Path** : models\ads\customer_service_team\report_ads_complaint_summary_monthly.sql
 
   * ## **Driver-Related Complaints Report**  
     * **Business Objective:** Identify behavioral or performance issues related to drivers and determine if certain drivers require further training or intervention.  
@@ -156,18 +156,18 @@
 
     * **Remark:**
       * This Report will consist of 2 Table
-        * model_ads_driver_high_reported
+        * report_ads_driver_high_reported
             * Contain driver top 50 most complainted lifetime
-        * model_ads_reported_summary
+        * report_ads_reported_summary
             * Contain avg_duration_resolved_min and avg_csat_score
                 * Can filter issue_type = 'rider' to see only rider matter
 
     * **Directory:**
-       * **Table** : model_ads_driver_high_reported
-       * **Path** : models\ads\customer_service_team\model_ads_driver_high_reported.sql
+       * **Table** : report_ads_driver_high_reported
+       * **Path** : models\ads\customer_service_team\report_ads_driver_high_reported.sql
 
-       * **Table** : model_ads_reported_summary
-       * **Path** : models\ads\customer_service_team\model_ads_reported_summary.sql
+       * **Table** : report_ads_reported_summary
+       * **Path** : models\ads\customer_service_team\report_ads_reported_summary.sql
 
   * ## **Restaurant Quality Complaint Report**  
     * **Business Objective:** Monitor the quality of food and service provided by partner restaurants and ensure they align with platform standards.  
@@ -181,7 +181,7 @@
 
     * **Remark:**
       * This Report will consist of 2 Table
-        * model_ads_restaurant_high_reported
+        * report_ads_restaurant_high_reported
             * Contain restaurant top 50 most complainted lifetime
         * model_ads_reported_summary
             * Contain avg_duration_resolved_min and avg_csat_score
@@ -189,8 +189,8 @@
         * For restaurant only consider issue_type = food
 
     * **Directory:**
-       * **Table** : model_ads_restaurant_high_reported
-       * **Path** : models\ads\customer_service_team\model_ads_restaurant_high_reported.sql
+       * **Table** : report_ads_restaurant_high_reported
+       * **Path** : models\ads\customer_service_team\report_ads_restaurant_high_reported.sql
 
        * **Table** : model_ads_reported_summary
-       * **Path** : models\ads\customer_service_team\model_ads_reported_summary.sql
+       * **Path** : models\ads\customer_service_team\report_ads_reported_summary.sql

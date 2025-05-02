@@ -1,7 +1,7 @@
 version: 2
 
 models:
-  - name: model_ads_campaign_effectiveness_report_monthly
+  - name: report_ads_campaign_effectiveness_report_monthly
     description: >
       This model generates a monthly report on campaign effectiveness, including metrics such as exposure, interaction, 
       conversion counts, ad costs, and revenue for each campaign.
@@ -37,4 +37,90 @@ models:
       - name: monthly_revenue_thb
         description: >
           The total revenue (in THB) generated from net orders for the campaign in the given month.
+        data_type: double
+
+  - name: report_ads_campaign_customer_acquisition_performance
+    description: >
+      This model tracks customer acquisition metrics, including the number of new customers acquired through campaigns, 
+      their behavior, and campaign performance metrics such as average purchase value and retention duration.
+    columns:
+      - name: campaign_type
+        description: >
+          The type of campaign
+        data_type: varchar
+      - name: objective
+        description: >
+          The primary objective of the campaign
+        data_type: varchar
+      - name: channel
+        description: >
+          The channel through which the campaign was conducted
+        data_type: varchar
+      - name: platform
+        description: >
+          The platform used for the campaign
+        data_type: varchar
+      - name: campaign_id
+        description: >
+          Campaign ID
+        data_type: varchar
+      - name: cnt_first_time_campaign_customer
+        description: >
+          The total number of first-time customers acquired through the campaign.
+        data_type: integer
+      - name: avg_purchase_value_thb
+        description: >
+          The average purchase value of customers acquired through the campaign, in Thai Baht (THB).
+        data_type: double
+      - name: avg_repeated_order_after_acquistion
+        description: >
+          The average number of repeated orders placed by customers after acquisition.
+        data_type: double
+      - name: avg_customer_retention_day
+        description: >
+          The average duration, in days, that customers retained after their first transaction.
+        data_type: double
+      - name: avg_interaction_order_sec
+        description: >
+          The average time, in seconds, between the first interaction with the campaign and the first order.
+        data_type: double
+      - name: total_ad_cost_thb
+        description: >
+          The total advertising cost for the campaign, in Thai Baht (THB).
+        data_type: double
+
+models:
+  - name: report_ads_campaign_customer_retarget_performance
+    description: >
+      This model tracks retargeting campaign performance, including metrics such as the number of customers targeted, 
+      return and retention ratios, total spending after retargeting, and the average time gap between the original 
+      and return orders.
+    columns:
+      - name: campaign_id
+        description: >
+          Unique identifier for the retargeting campaign.
+        data_type: varchar
+      - name: targeting_strategy
+        description: >
+          The strategy used for targeting customers in the retargeting campaign.
+        data_type: varchar
+      - name: cnt_customers_targeted
+        description: >
+          The total number of unique customers targeted by the retargeting campaign.
+        data_type: integer
+      - name: ratio_returned_customer
+        description: >
+          The ratio of customers who returned after being targeted by the retargeting campaign.
+        data_type: double
+      - name: total_spend_after_retarget_thb
+        description: >
+          The total amount spent by customers after being targeted by the retargeting campaign, in Thai Baht (THB).
+        data_type: double
+      - name: avg_time_gap_original_return_order_day
+        description: >
+          The average time gap, in days, between the original order and the return order after retargeting.
+        data_type: double
+      - name: ratio_retained_customer
+        description: >
+          The ratio of customers who were retained (placed additional orders within 30 days) after being targeted by the retargeting campaign.
         data_type: double

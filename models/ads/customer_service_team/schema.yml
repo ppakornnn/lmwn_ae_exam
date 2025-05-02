@@ -1,7 +1,7 @@
 version: 2
 
 models:
-  - name: model_ads_complaint_summary_monthly
+  - name: report_ads_complaint_summary_monthly
     description: >
       This model provides a monthly summary of customer service complaints, including metrics such as the total number 
       of opened tickets, unresolved tickets, average resolution time, and total compensation amounts.
@@ -35,7 +35,7 @@ models:
           The total compensation amount provided for tickets in the given month, in Thai Baht (THB).
         data_type: double
 
-  - name: model_ads_driver_high_reported
+  - name: report_ads_driver_high_reported
     description: >
       This model identifies drivers with high complaint counts, providing metrics such as the total number of complaints, 
       the ratio of complaints to assigned orders, and the most frequently reported complaint subtype.
@@ -61,7 +61,7 @@ models:
           The most frequently reported complaint subtype for the driver, based on the highest count of issues.
         data_type: varchar
 
-  - name: model_ads_reported_summary
+  - name: report_ads_reported_summary
     description: >
       This model summarizes reported issues, providing metrics such as the average resolution time and 
       average customer satisfaction score (CSAT) for each issue type and subtype.
@@ -83,7 +83,7 @@ models:
           The average customer satisfaction score (CSAT) for tickets resolved for the given issue type and subtype.
         data_type: double
 
-  - name: model_ads_restaurant_high_reported
+  - name: report_ads_restaurant_high_reported
     description: >
       This model identifies restaurants with high complaint counts, providing metrics such as the total number of complaints, 
       the ratio of complaints to assigned orders, and the most frequently reported complaint subtype.
