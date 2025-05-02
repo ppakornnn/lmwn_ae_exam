@@ -113,3 +113,6 @@ dbt test
 
 ## **Appendix**
 For each requirements and table can be find in appendix folder
+
+## **Table Lineage**
+Can be found in dbt docs
